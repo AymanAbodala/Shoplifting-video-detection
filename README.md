@@ -20,27 +20,70 @@
 
 │ └── mae_transformer.py
 
-├── experiments/ # Training logs, checkpoints, and evaluation results
+myproject/                        # اسم المشروع الرئيسي
 
-├── classifier/ # Django app for deployment
+│
 
-│ ├── inference.py
+├── manage.py                     # سكريبت إدارة Django
 
-│ ├── views.py
+│
 
-│ ├── urls.py
+├── myproject/                     # مجلد الإعدادات (settings.py وغيره)
 
-│ └── templates/
+│   ├── __init__.py
 
-│ └── index.html
+│   ├── asgi.py
 
-├── static/ # CSS, JS, and frontend UI assets
+│   ├── settings.py               # إعدادات المشروع
 
-├── media/ # Uploaded videos for testing
+│   ├── urls.py                   # الروابط الرئيسية
 
-├── requirements.txt # Dependencies
+│   ├── wsgi.py
 
-├── manage.py # Django project entry point
+│
+
+├── app/                           # التطبيق اللي بيحتوي على الموديل
+
+│   ├── __init__.py
+
+│   ├── admin.py
+
+│   ├── apps.py
+
+│   ├── migrations/
+
+│   ├── models.py                  # (اختياري لو عندك DB)
+
+│   ├── views.py                   # هنا بتكتب الـ API اللي بيشغل الموديل
+
+│   ├── urls.py                    # روابط التطبيق
+
+│   ├── forms.py                   # (اختياري لو عندك فورم HTML)
+
+│   ├── templates/                 # صفحات HTML
+
+│   │   └── index.html             # صفحة الواجهة
+
+│   ├── static/                    # ملفات CSS/JS
+
+│   │   ├── css/
+
+│   │   └── js/
+
+│   └── ml_model/                  # مجلد خاص بالموديل
+
+│       ├── __init__.py
+
+│       ├── model.py               # كود لتحميل الموديل والتنبؤ
+
+│       └── saved_model/           # ملفات الموديل (pth / h5 / pkl...)
+
+│
+
+├── requirements.txt               # مكتبات Python
+
+└── runtime.txt / Procfile          # ملفات خاصة بـ Deployment (مثلاً Heroku)
+
 
 ├── README.md # Project documentation
 
@@ -79,11 +122,11 @@
 
 - **We compared the performance of each model using accuracy and loss curves**.
 
-Model	Accuracy
-3D CNN (Scratch)	61 %
-CNN-LSTM (Scratch)	50 %
-CNN-LSTM (Pretrained)	91 %
-MAE Transformers	49 %
+- **Model	Accuracy**
+  - 3D CNN (Scratch)	61 %
+  - CNN-LSTM (Scratch)	50 %
+  - CNN-LSTM (Pretrained)	91 %
+  - MAE Transformers	49 %
 
 ### ✅ Best Model: CNN-LSTM (Pretrained)
 
